@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Mobile-friendly solar panel business management app with customer management, document uploads, task assignment with deadlines and priorities, project status tracking through 8 stages, solar system details (DCR/Non-DCR, kW size, panel company), global search, dashboard analytics, and activity timeline",
+  "architectural_notes": [
+    "Backend built with Motoko on Internet Computer",
+    "Frontend: React + TypeScript + Tailwind CSS",
+    "8-stage project workflow: Files Uploaded → Bank → Loan Passed → Feasibility → Product Arrived → Installation Completed → KSEB Registration → MNRE Form",
+    "Solar system tracking: panel type (DCR/Non-DCR), kW size, panel company",
+    "Global search by customer name, phone, panel company, kW size",
+    "Activity timeline auto-records status changes with timestamps",
+    "Dashboard analytics: total customers, completed installations, pending KSEB/MNRE, total kW"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-automatic-deadline-reminder-notifications-that-trigger-before-task-deadlines-to-prevent-delays",
+      "title": "Implement automatic deadline reminder notifications that trigger before task deadlines to prevent delays",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-offline-support-with-service-worker-for-offline-viewing-and-automatic-syncing-when-internet-is-restored",
+      "title": "Add offline support with service worker for offline viewing and automatic syncing when internet is restored",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-document-upload-ui-with-file-picker-and-upload-progress-indicators-for-customer-document-management",
+      "title": "Build document upload UI with file picker and upload progress indicators for customer document management",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-advanced-dashboard-filtering-by-panel-company-kw-size-and-project-stage-to-help-with-task-planning",
+      "title": "Implement advanced dashboard filtering by panel company, kW size, and project stage to help with task planning",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-polish-ui-with-responsive-design-improvements-and-loading-states-throughout-the-application",
+      "title": "Polish UI with responsive design improvements and loading states throughout the application",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Automatic deadline reminders/notifications before task deadlines",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Offline support with service worker and automatic syncing",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Document upload UI with file picker and progress indicators",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Advanced dashboard filtering by panel company, kW size, or project stage",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "UI polish: responsive design tweaks and loading states",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Solar Panel Manager",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

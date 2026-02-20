@@ -1,0 +1,119 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-implement-automatic-deadline-reminder-notifications-that-trigger-before-task-deadlines-to-prevent-delays",
+      "featureTitle": "Implement automatic deadline reminder notifications that trigger before task deadlines to prevent delays",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/NotificationPermissionPrompt.tsx",
+        "frontend/src/hooks/useDeadlineNotifications.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-offline-support-with-service-worker-for-offline-viewing-and-automatic-syncing-when-internet-is-restored",
+      "featureTitle": "Add offline support with service worker for offline viewing and automatic syncing when internet is restored",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/OfflineIndicator.tsx",
+        "frontend/src/hooks/useOfflineSync.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-document-upload-ui-with-file-picker-and-upload-progress-indicators-for-customer-document-management",
+      "featureTitle": "Build document upload UI with file picker and upload progress indicators for customer document management",
+      "files": [
+        "frontend/src/components/DocumentList.tsx",
+        "frontend/src/components/DocumentUploader.tsx",
+        "frontend/src/components/UploadProgressBar.tsx",
+        "frontend/src/pages/CustomerDetailPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-advanced-dashboard-filtering-by-panel-company-kw-size-and-project-stage-to-help-with-task-planning",
+      "featureTitle": "Implement advanced dashboard filtering by panel company, kW size, and project stage to help with task planning",
+      "files": [
+        "frontend/src/components/ActiveFilterBadges.tsx",
+        "frontend/src/components/DashboardFilters.tsx",
+        "frontend/src/hooks/useProjectFilters.ts",
+        "frontend/src/pages/DashboardPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-polish-ui-with-responsive-design-improvements-and-loading-states-throughout-the-application",
+      "featureTitle": "Polish UI with responsive design improvements and loading states throughout the application",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/LoadingSpinner.tsx",
+        "frontend/src/components/LoadingState.tsx",
+        "frontend/src/components/MobileNavigation.tsx",
+        "frontend/src/components/SkeletonLoader.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/CustomerDetailPage.tsx",
+        "frontend/src/pages/DashboardPage.tsx",
+        "frontend/src/pages/TasksPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

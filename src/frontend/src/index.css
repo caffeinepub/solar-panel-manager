@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+        --background: 0.99 0 0;
+        --foreground: 0.15 0 0;
+        --card: 1 0 0;
+        --card-foreground: 0.15 0 0;
+        --popover: 1 0 0;
+        --popover-foreground: 0.15 0 0;
+        --primary: 0.55 0.18 240;
+        --primary-foreground: 0.99 0 0;
+        --secondary: 0.96 0 0;
+        --secondary-foreground: 0.15 0 0;
+        --muted: 0.96 0 0;
+        --muted-foreground: 0.50 0 0;
+        --accent: 0.96 0 0;
+        --accent-foreground: 0.15 0 0;
+        --destructive: 0.58 0.22 25;
+        --destructive-foreground: 0.99 0 0;
+        --border: 0.90 0 0;
+        --input: 0.90 0 0;
+        --ring: 0.55 0.18 240;
+        --chart-1: 0.65 0.20 150;
+        --chart-2: 0.60 0.18 200;
+        --chart-3: 0.55 0.16 280;
+        --chart-4: 0.70 0.22 40;
+        --chart-5: 0.75 0.20 320;
+    }
+
+    .dark {
+        --background: 0.12 0 0;
+        --foreground: 0.98 0 0;
+        --card: 0.16 0 0;
+        --card-foreground: 0.98 0 0;
+        --popover: 0.16 0 0;
+        --popover-foreground: 0.98 0 0;
+        --primary: 0.65 0.20 240;
+        --primary-foreground: 0.12 0 0;
+        --secondary: 0.22 0 0;
+        --secondary-foreground: 0.98 0 0;
+        --muted: 0.22 0 0;
+        --muted-foreground: 0.65 0 0;
+        --accent: 0.28 0 0;
+        --accent-foreground: 0.98 0 0;
+        --destructive: 0.62 0.24 25;
+        --destructive-foreground: 0.98 0 0;
+        --border: 0.28 0 0;
+        --input: 0.28 0 0;
+        --ring: 0.65 0.20 240;
+        --chart-1: 0.70 0.22 150;
+        --chart-2: 0.65 0.20 200;
+        --chart-3: 0.60 0.18 280;
+        --chart-4: 0.75 0.24 40;
+        --chart-5: 0.80 0.22 320;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}
+
+@layer utilities {
+    .touch-action-none {
+        touch-action: none;
+    }
+    
+    .tap-highlight-transparent {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Smooth transitions */
+* {
+    @apply transition-colors duration-200;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    /* Ensure touch targets are at least 44x44px */
+    button, a, input, select, textarea {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Prevent text size adjustment on orientation change */
+    html {
+        -webkit-text-size-adjust: 100%;
+    }
+}
+
+/* Loading animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}

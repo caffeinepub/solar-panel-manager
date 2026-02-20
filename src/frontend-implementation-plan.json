@@ -1,0 +1,200 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add deadline reminders, offline support, document upload UI, advanced filtering, and UI polish",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement automatic deadline reminder notifications that trigger before task deadlines",
+      "acceptanceCriteria": [
+        "Users receive notifications for tasks approaching their deadline",
+        "Reminders are sent at appropriate intervals before the deadline",
+        "Notification system integrates with the existing task management backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useDeadlineNotifications.ts",
+          "operation": "create",
+          "description": "Create a custom hook to monitor task deadlines and trigger browser notifications when tasks are approaching their deadline. The hook should check deadlines periodically, calculate time remaining, and use the Notification API to alert users."
+        },
+        {
+          "path": "frontend/src/components/NotificationPermissionPrompt.tsx",
+          "operation": "create",
+          "description": "Create a component that prompts users to enable browser notifications on first visit or when notifications are disabled. Include UI for requesting permission and explaining the benefit of deadline reminders."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Integrate the useDeadlineNotifications hook at the app level to monitor all tasks and wire in the NotificationPermissionPrompt component to request notification permissions when needed."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add offline support with service worker for offline viewing and automatic syncing",
+      "acceptanceCriteria": [
+        "App displays cached data when offline",
+        "Changes made offline are queued and synced automatically when connection is restored",
+        "User receives feedback about offline status and pending syncs"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/service-worker.js",
+          "operation": "create",
+          "description": "Create a service worker that caches app shell, static assets, and API responses for offline viewing. Implement cache-first strategy for static resources and network-first with cache fallback for dynamic data."
+        },
+        {
+          "path": "frontend/src/utils/offlineQueue.ts",
+          "operation": "create",
+          "description": "Create an offline queue utility to store mutations (create, update, delete operations) made while offline in IndexedDB. Include logic to replay queued operations when connection is restored and handle conflicts."
+        },
+        {
+          "path": "frontend/src/hooks/useOfflineSync.ts",
+          "operation": "create",
+          "description": "Create a custom hook that monitors online/offline status, manages the offline queue, and triggers sync when connection is restored. Provide status information about pending syncs and sync progress."
+        },
+        {
+          "path": "frontend/src/components/OfflineIndicator.tsx",
+          "operation": "create",
+          "description": "Create a component that displays the current online/offline status and shows pending sync operations. Include visual feedback when syncing is in progress or when sync fails."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the service worker on app initialization and integrate the useOfflineSync hook and OfflineIndicator component to provide offline support across the application."
+        },
+        {
+          "path": "frontend/vite.config.ts",
+          "operation": "modify",
+          "description": "Configure Vite to properly handle service worker registration and ensure the service worker file is included in the build output without being processed."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build document upload UI with file picker and upload progress indicators",
+      "acceptanceCriteria": [
+        "File picker allows selecting documents to upload",
+        "Progress indicator shows upload status",
+        "Uploaded documents appear in the customer's document list",
+        "Support for common document formats (PDF, images, etc.)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/DocumentUploader.tsx",
+          "operation": "create",
+          "description": "Create a document uploader component with file picker input supporting PDF, images (JPG, PNG), and common document formats. Use the blob-storage component's ExternalBlob.fromBytes() and withUploadProgress() methods to handle uploads with progress tracking. Verify the blob-storage component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/DocumentList.tsx",
+          "operation": "create",
+          "description": "Create a component to display uploaded documents with file name, type, size, and upload date. Use the blob-storage component's ExternalBlob.getDirectURL() method to provide download links for documents. Include actions for viewing and deleting documents."
+        },
+        {
+          "path": "frontend/src/components/UploadProgressBar.tsx",
+          "operation": "create",
+          "description": "Create a reusable progress bar component that displays upload percentage and status (uploading, complete, error). This component will be used within DocumentUploader to show real-time upload progress."
+        },
+        {
+          "path": "frontend/src/pages/CustomerDetailPage.tsx",
+          "operation": "modify",
+          "description": "Integrate the DocumentUploader and DocumentList components into the customer detail page to enable document management for each customer. Add a documents section showing uploaded files and allowing new uploads."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement advanced dashboard filtering by panel company, kW size, and project stage",
+      "acceptanceCriteria": [
+        "Filter controls available on dashboard for panel company, kW size, and project stage",
+        "Dashboard updates dynamically based on selected filters",
+        "Multiple filters can be applied simultaneously",
+        "Clear indication of active filters with ability to reset"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/DashboardFilters.tsx",
+          "operation": "create",
+          "description": "Create a filter panel component with controls for panel company (dropdown), kW size (range slider or input), and project stage (multi-select). Include a reset/clear filters button and display active filter count."
+        },
+        {
+          "path": "frontend/src/hooks/useProjectFilters.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage filter state, apply multiple filters simultaneously to project data, and provide functions to update and reset filters. Include logic to filter projects by panel company, kW size range, and project stage."
+        },
+        {
+          "path": "frontend/src/components/ActiveFilterBadges.tsx",
+          "operation": "create",
+          "description": "Create a component that displays active filters as removable badges. Users can click a badge to remove that specific filter while keeping others active."
+        },
+        {
+          "path": "frontend/src/pages/DashboardPage.tsx",
+          "operation": "modify",
+          "description": "Integrate the DashboardFilters component, useProjectFilters hook, and ActiveFilterBadges component into the dashboard. Apply filters to the project list and update the display dynamically when filters change."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Polish UI with responsive design improvements and loading states",
+      "acceptanceCriteria": [
+        "All pages are fully responsive on mobile, tablet, and desktop",
+        "Loading states display during data fetches and operations",
+        "Smooth transitions and consistent spacing across the interface",
+        "Mobile navigation is intuitive and touch-friendly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/LoadingSpinner.tsx",
+          "operation": "create",
+          "description": "Create a reusable loading spinner component with size variants (small, medium, large) for use throughout the application during data fetches and async operations."
+        },
+        {
+          "path": "frontend/src/components/LoadingState.tsx",
+          "operation": "create",
+          "description": "Create a full-page loading state component with spinner and optional message for initial page loads and major operations."
+        },
+        {
+          "path": "frontend/src/components/SkeletonLoader.tsx",
+          "operation": "create",
+          "description": "Create skeleton loading components for cards, lists, and tables to provide better perceived performance during data loading."
+        },
+        {
+          "path": "frontend/src/components/MobileNavigation.tsx",
+          "operation": "create",
+          "description": "Create a mobile-optimized navigation component with hamburger menu, touch-friendly tap targets (minimum 44x44px), and smooth slide-in/out transitions. Include proper active state indicators."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add responsive utilities, consistent spacing scale, smooth transition defaults, and mobile-specific optimizations. Define breakpoints for mobile (< 768px), tablet (768px - 1024px), and desktop (> 1024px). Include touch-action and tap-highlight optimizations for mobile."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration with custom spacing scale, responsive breakpoints, transition timing functions, and mobile-first utility classes for consistent design system."
+        },
+        {
+          "path": "frontend/src/pages/DashboardPage.tsx",
+          "operation": "modify",
+          "description": "Add LoadingState component for initial data fetch, apply responsive grid layouts that adapt to mobile/tablet/desktop, and ensure touch-friendly interactive elements."
+        },
+        {
+          "path": "frontend/src/pages/CustomerDetailPage.tsx",
+          "operation": "modify",
+          "description": "Add loading states for data fetches, implement responsive layout with stacked sections on mobile and side-by-side on desktop, and add smooth transitions between states."
+        },
+        {
+          "path": "frontend/src/pages/TasksPage.tsx",
+          "operation": "modify",
+          "description": "Add SkeletonLoader for task list loading, implement responsive table/card view that switches to cards on mobile, and ensure all interactive elements are touch-friendly."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Integrate MobileNavigation component with conditional rendering based on screen size, add global loading state handling, and ensure consistent responsive behavior across all routes."
+        }
+      ]
+    }
+  ]
+}

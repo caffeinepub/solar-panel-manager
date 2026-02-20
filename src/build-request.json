@@ -1,0 +1,110 @@
+{
+  "kind": "build_request",
+  "title": "Add deadline reminders, offline support, document upload UI, advanced filtering, and UI polish",
+  "projectName": "Solar Panel Manager",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement automatic deadline reminder notifications that trigger before task deadlines to prevent delays",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "automatically send reminders before deadlines to prevent delays"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users receive notifications for tasks approaching their deadline",
+        "Reminders are sent at appropriate intervals before the deadline",
+        "Notification system integrates with the existing task management backend"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add offline support with service worker for offline viewing and automatic syncing when internet is restored",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "support offline viewing with automatic syncing when internet is restored"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App displays cached data when offline",
+        "Changes made offline are queued and synced automatically when connection is restored",
+        "User receives feedback about offline status and pending syncs"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build document upload UI with file picker and upload progress indicators for customer document management",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "File picker allows selecting documents to upload",
+        "Progress indicator shows upload status",
+        "Uploaded documents appear in the customer's document list",
+        "Support for common document formats (PDF, images, etc.)"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement advanced dashboard filtering by panel company, kW size, and project stage to help with task planning",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "with these details visible on the dashboard and usable for filtering and task planning"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Filter controls available on dashboard for panel company, kW size, and project stage",
+        "Dashboard updates dynamically based on selected filters",
+        "Multiple filters can be applied simultaneously",
+        "Clear indication of active filters with ability to reset"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Polish UI with responsive design improvements and loading states throughout the application",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages are fully responsive on mobile, tablet, and desktop",
+        "Loading states display during data fetches and operations",
+        "Smooth transitions and consistent spacing across the interface",
+        "Mobile navigation is intuitive and touch-friendly"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maintain existing backend data structures and API contracts",
+    "Preserve mobile-first design approach",
+    "Do not modify Internet Identity authentication flow"
+  ],
+  "nonGoals": [
+    "Push notifications to external devices",
+    "Email or SMS notifications",
+    "Advanced analytics or reporting beyond existing summary reports",
+    "Multi-user collaboration or role-based access control"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
